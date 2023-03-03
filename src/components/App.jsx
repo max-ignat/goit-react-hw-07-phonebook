@@ -9,12 +9,15 @@ import { Title } from './Form/Form.styled';
 import { useSelector, useDispatch } from 'react-redux'; 
 // import { addContact, deleteContact } from 'redux/contacts/contacts-slice';
 import { setFilter } from 'redux/filter/filter-slice';
-import { getAllContacts } from 'redux/contacts/contacts-selectors';
+import {
+  // getAllContacts,
+  getfilteredContacts,
+} from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { fetchAllContacts , fetchAddContact , fetchDeleteContact} from 'redux/contacts/contacts-operations';
 
 const App = () => {
-  const contacts = useSelector(getAllContacts); 
+  const contacts = useSelector(getfilteredContacts); 
   const filter = useSelector(getFilter);
   const dispatch = useDispatch(); 
   const [showModal, setShowModal] = useState(false);

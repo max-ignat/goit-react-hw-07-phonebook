@@ -22,7 +22,7 @@ const Contacts = ({ contacts, onDeleteContact }) => {
               </ContactData>
 
               <Button type="button" onClick={() => onDeleteContact(id)}>
-                remove
+                delete
               </Button>
             </Contact>
           ))}
