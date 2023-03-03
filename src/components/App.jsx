@@ -10,14 +10,14 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { addContact, deleteContact } from 'redux/contacts/contacts-slice';
 import { setFilter } from 'redux/filter/filter-slice';
 import {
-  // getAllContacts,
-  getfilteredContacts,
+  getAllContacts,
+  // getfilteredContacts,
 } from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { fetchAllContacts , fetchAddContact , fetchDeleteContact} from 'redux/contacts/contacts-operations';
 
 const App = () => {
-  const contacts = useSelector(getfilteredContacts); 
+  const contacts = useSelector(getAllContacts); 
   const filter = useSelector(getFilter);
   const dispatch = useDispatch(); 
   const [showModal, setShowModal] = useState(false);
@@ -37,17 +37,7 @@ const App = () => {
   // }, [contacts]);
 
   const handleAddContact = ({ name, number }) => {
-    const lowerCasedName = name.toLowerCase();
 
-    let added = contacts.find(
-      contact => contact.name.toLowerCase() === lowerCasedName
-    );
-    if (added) {
-      alert(`${name}  is already in contacts`);
-      return;
-    }
-
-    // dispatch(addContact({ name, number }));
     dispatch(fetchAddContact({ name, number }));
     toggleModal();
   };
@@ -63,10 +53,12 @@ const App = () => {
   };
 
   const filteredContacts = () => {
-  const lowerCasedFilter = filter.toLowerCase();
+    const lowerCasedFilter = filter.toLowerCase();
+    console.log('contacts', contacts);
   return contacts.filter(contact =>
     contact.name.toLowerCase().includes(lowerCasedFilter)
-  );
+    );
+    
 };
 
 
