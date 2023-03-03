@@ -54,7 +54,7 @@ const App = () => {
 
   const filteredContacts = () => {
     const lowerCasedFilter = filter.toLowerCase();
-    console.log('contacts', contacts);
+    // console.log('contacts', contacts);
   return contacts.filter(contact =>
     contact.name.toLowerCase().includes(lowerCasedFilter)
     );
