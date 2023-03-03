@@ -11,9 +11,9 @@ import { Provider } from 'react-redux'; //!give access to store for all componet
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </PersistGate>
   </Provider>
 );
