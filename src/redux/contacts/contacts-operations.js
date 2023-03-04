@@ -17,8 +17,8 @@ export const fetchAllContacts = () => {
   const foo = async dispatch => {
     try {
       dispatch(actions.fetchAllContactsLoading());
-      const data = await api.getContacts();
-      // console.log(data);
+      const data = await api.getAllContacts();
+      console.log(data);
       dispatch(actions.fetchAllContactsSuccess(data));
     } catch ({ response }) {
       dispatch(actions.fetchAllContactsError(response.data.message));

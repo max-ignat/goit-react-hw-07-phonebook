@@ -1,7 +1,5 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-// import shortid from 'shortid';
-// import actions from './contacts-action';
 import { fetchAddContactError, fetchAddContactLoading, fetchAddContactSuccess, fetchAllContactsError, fetchAllContactsLoading, fetchAllContactsSuccess, fetchDeleteContactError, fetchDeleteContactLoading, fetchDeleteContactSuccess } from './contacts-action';
     
 
@@ -22,7 +20,7 @@ const contactsSlice = createSlice({
     },
     [fetchAllContactsSuccess]: (store, { payload }) => {
       store.isLoading = false;
-      store.items = payload;
+      store.contacts = payload;
     },
     [fetchAllContactsError]: (store, { payload }) => {
       store.isLoading = false;
@@ -33,7 +31,7 @@ const contactsSlice = createSlice({
     },
     [fetchAddContactSuccess]: (store, { payload }) => {
       store.isLoading = false;
-      store.items.push(payload);
+      store.contacts.push(payload);
     },
     [fetchAddContactError]: (store, { payload }) => {
       store.isLoading = false;
@@ -44,8 +42,10 @@ const contactsSlice = createSlice({
     },
     [fetchDeleteContactSuccess]: (store, { payload }) => {
       store.isLoading = false;
-      const index = store.items.findIndex(item => item.id === payload)
-      store.items.splice(index, 1);
+      const index = store.contacts.findIndex(
+        contact => contact.id === payload
+      );
+      store.contacts.splice(index, 1);
     },
     [fetchDeleteContactError]: (store, { payload }) => {
       store.isLoading = false;
