@@ -88,6 +88,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-//!!!! вохможно ошибка
-
 //!give access to store for all componets
