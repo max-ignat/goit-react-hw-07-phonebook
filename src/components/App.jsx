@@ -6,22 +6,22 @@ import Filter from './Filter';
 import Modal from './Modal';
 import { ModalButton } from './Modal/Modal.styled';
 import { Title } from './Form/Form.styled';
-import { useSelector, useDispatch } from 'react-redux'; 
-// import { addContact, deleteContact } from 'redux/contacts/contacts-slice';
+import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
-import {
-  getAllContacts,
-  // getfilteredContacts,
-} from 'redux/contacts/contacts-selectors';
+import { getAllContacts } from 'redux/contacts/contacts-selectors';
 import { getFilter } from 'redux/filter/filter-selectors';
-import { fetchAllContacts , fetchAddContact , fetchDeleteContact} from 'redux/contacts/contacts-operations';
+import {
+  fetchAllContacts,
+  fetchAddContact,
+  fetchDeleteContact,
+} from 'redux/contacts/contacts-operations';
 
 const App = () => {
-  const contacts = useSelector(getAllContacts); 
+  const contacts = useSelector(getAllContacts);
   const filter = useSelector(getFilter);
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-// console.log(contacts)
+  // console.log(contacts)
   const toggleModal = () => {
     if (showModal) {
       setShowModal(false);
@@ -29,15 +29,14 @@ const App = () => {
       setShowModal(true);
     }
   };
- useEffect(() => {
-   dispatch(fetchAllContacts())
- }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchAllContacts());
+  }, [dispatch]);
   // useEffect(() => {
   //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
 
   const handleAddContact = ({ name, number }) => {
-
     dispatch(fetchAddContact({ name, number }));
     toggleModal();
   };
@@ -54,15 +53,10 @@ const App = () => {
 
   const filteredContacts = () => {
     const lowerCasedFilter = filter.toLowerCase();
-    // console.log('contacts', contacts);
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(lowerCasedFilter)
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(lowerCasedFilter)
     );
-    
-};
-
-
-
+  };
 
   return (
     <Box>
